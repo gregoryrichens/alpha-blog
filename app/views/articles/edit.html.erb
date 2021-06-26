@@ -9,8 +9,6 @@
   </ul>
 <% end %>
 
-// by changing this to article, rails will know which id to use
-// with local rails knows which local route to submit the update to
 <%= form_with(model: @article, local: true) do |f| %>
   <p>
     <%= f.label :title %><br>
