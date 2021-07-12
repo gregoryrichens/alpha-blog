@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   def create
     # can't just directly use params to save to database - instead we require :article
     # and then we permit certain attributes for that param
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(article_params)
     if @article.save
       flash[:notice] = "Article was created successfully."
       #redirect to that article's show page
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(params.require(:article).permit(:title, :description))
+    if @article.update(article_params)
       flash[:notice] = " Article was updated successfully."
       redirect_to(articles_path)
     else
@@ -47,5 +47,9 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :description)
   end
 end
