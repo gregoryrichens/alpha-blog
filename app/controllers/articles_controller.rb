@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
     # can't just directly use params to save to database - instead we require :article
     # and then we permit certain attributes for that param
     @article = Article.new(article_params)
+    @article.user = User.first
     if @article.save
       flash[:notice] = "Article was created successfully."
       #redirect to that article's show page
