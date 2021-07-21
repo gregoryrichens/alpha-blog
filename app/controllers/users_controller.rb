@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   end
   
   def new
-    @user = User.new
+    @user = User.articles.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.paginate(page: params[:page], per_page: 5)
   end
 
   def update
