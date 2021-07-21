@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :articles # basically does the above - provides all restful routes
   get "signup", to: "users#new"
   resources :users, except: [:new]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'login', to: 'sessions#destroy'
 end

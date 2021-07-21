@@ -5,6 +5,11 @@
 </div>
 
 <h3>Articles</h3>
+
+<%= will_paginate @articles %>
+
 <%= render 'articles/article' %>
 
 <%= button_to 'Articles Home', articles_path, method: :get %>
+
+<%= will_paginate @articles %>
